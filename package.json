@@ -1,0 +1,18 @@
+{
+  "name": "frontassignment",
+  "version": "1.0.0",
+  "description": "It is website where you get all the details of a github user by entering their username ",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Atif",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "node-sass-middleware": "^1.0.1",
+    "nodemon": "^2.0.20"
+  }
+}
