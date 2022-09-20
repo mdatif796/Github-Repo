@@ -35,22 +35,22 @@ $('#input-container button').click(function(){
                                     $(` .user-repo-${i} .lang-btn-container`).append($(`<button>${language}</button>`));
                                 }
                             },complete: function(xhr){
-                                $('#loader-container').hide();
+                                $('#loader-container').remove();
                             }
                         });
                     }
                 },complete: function(xhr){
                     $('#user-input').val("");
-                    $('#loader-container').hide();
+                    $('#loader-container').remove();
                 }
             });
         },complete: function(xhr){
-            $('#loader-container').hide();
+            $('#loader-container').remove();
         }
     }).catch((err) => {
         alert(err.responseJSON.message);
         $('#user-input').val("");
-        $('#loader-container').hide();
+        $('#loader-container').remove();
     });
 });
 
