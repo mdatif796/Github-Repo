@@ -41,7 +41,6 @@ $('#input-container button').click(function(){
                     }
                 },complete: function(xhr){
                     $('#user-input').val("");
-                    console.log(xhr.status);
                     $('#loader-container').hide();
                 }
             });
@@ -51,7 +50,7 @@ $('#input-container button').click(function(){
     }).catch((err) => {
         alert(err.responseJSON.message);
         $('#user-input').val("");
-        console.log(err.responseJSON.message);
+        $('#loader-container').hide();
     });
 });
 
