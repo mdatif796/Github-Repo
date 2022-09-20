@@ -1,0 +1,98 @@
+body {
+  margin: 0; }
+  body p {
+    color: #393939;
+    font-weight: bold; }
+  body #loader-container {
+    height: 20rem;
+    width: 20rem;
+    margin: auto; }
+  body #input-container {
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    body #input-container input {
+      height: 1.5rem;
+      width: 15rem;
+      outline: none;
+      font-size: 15px;
+      margin-right: 2rem; }
+    body #input-container button {
+      height: 1.7rem;
+      width: 6rem;
+      border: none;
+      background-color: #428bca;
+      border-radius: 3px;
+      color: #f0f6fb;
+      cursor: pointer;
+      font-weight: bold; }
+  body #user-details {
+    width: 60%;
+    margin: auto;
+    padding: 0rem 1rem; }
+    body #user-details #imgAndName-container {
+      width: 100%;
+      display: flex;
+      align-items: center; }
+      body #user-details #imgAndName-container #img-container {
+        width: 10rem;
+        height: 10rem;
+        border: 4px solid #eeeeee;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 5rem;
+        margin-left: 1rem; }
+        body #user-details #imgAndName-container #img-container img {
+          width: 97%;
+          height: 97%;
+          border-radius: 50%; }
+      body #user-details #imgAndName-container #name-container {
+        width: 75%; }
+        body #user-details #imgAndName-container #name-container #twitter-handle a {
+          text-decoration: none;
+          color: #393939;
+          font-weight: bold; }
+    body #user-details #user-github-link a {
+      text-decoration: none;
+      color: #393939; }
+  body #user-repo-container {
+    width: 60%;
+    margin: auto;
+    margin-top: 2rem;
+    padding: 0rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between; }
+    body #user-repo-container .user-repo {
+      width: 25rem;
+      height: 110px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      margin-bottom: 2rem;
+      padding: 0px 10px 13px 10px;
+      border: 2px solid black; }
+      body #user-repo-container .user-repo .repo-details {
+        margin-top: -1.1rem; }
+        body #user-repo-container .user-repo .repo-details h2 {
+          margin-bottom: 0px;
+          color: #428bca; }
+        body #user-repo-container .user-repo .repo-details p {
+          margin-top: 3px; }
+      body #user-repo-container .user-repo .lang-btn-container {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap; }
+        body #user-repo-container .user-repo .lang-btn-container button {
+          margin-right: 1rem;
+          background-color: #428bca;
+          border: 0;
+          height: 1.8rem;
+          padding: 8px 4;
+          border-radius: 3px;
+          color: #f0f6fb;
+          font-weight: bold; }
