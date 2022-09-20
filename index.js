@@ -30,6 +30,7 @@ app.get('/', function(req, res){
 });
 
 
+// server is listening on port 8000
 app.listen(process.env.PORT || port, function(err){
     if(err){
         console.log('Error in connecting the express server', err);

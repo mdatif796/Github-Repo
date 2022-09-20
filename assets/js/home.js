@@ -1,3 +1,5 @@
+
+// click event on button
 $('#input-container button').click(function(){
     let userName = $('input').val();
     if(userName === ""){
