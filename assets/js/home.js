@@ -62,8 +62,8 @@ let loaderContainer = function(){
 let userRepo = function(data, i){
     return $(`<div class="user-repo-${i} user-repo">
                 <div class="repo-details">
-                    <h2 class="repo-name">${data.name}</h2>
-                    <p class="repo-desc">${data.description}</p>
+                    <a href="${data.html_url}" target="_blank"><h2 class="repo-name">${data.name}</h2></a>
+                    <p class="repo-desc">${data.description ? data.description : ""}</p>
                 </div>
                 <div class="lang-btn-container">
 
@@ -79,13 +79,13 @@ let userContainer = function(data){
                     </div>
                     <div id="name-container">
                         <h1 id="user-name">${data.name}</h1>
-                        <p id="user-bio">${data.bio}</p>
-                        <p id="user-location">${data.location}</p>
-                        <p id="twitter-handle">Twitter: <a href="https://twitter.com/${data.twitter_username}">https://twitter.com/${data.twitter_username}</a></p>
+                        <p id="user-bio">${data.bio ? data.bio : ""}</p>
+                        <p id="user-location">${data.location ? data.location : ""}</p>
+                        ${data.twitter_username ? `<p id="twitter-handle">Twitter: <a href="https://twitter.com/${data.twitter_username}">https://twitter.com/${data.twitter_username}</a></p>` : ""} 
                     </div>
                 </div>
                 <div id="user-github-link">
-                    <p><a href="https://github.com/${data.login}">https://github.com/${data.login}</a></p>
+                    ${data.login ? `<p><a href="https://github.com/${data.login}">https://github.com/${data.login}</a></p>` : ""} 
                 </div>
             </div>`);
 }
