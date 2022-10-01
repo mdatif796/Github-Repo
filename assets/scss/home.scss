@@ -150,5 +150,22 @@ body{
             }
         }
     }
+
+    #pagination{
+        height: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        p{
+            display: inline-block;
+            width: 1.5rem;
+            border: 0.5px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+    }
     
 }

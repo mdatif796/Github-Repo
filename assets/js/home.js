@@ -1,3 +1,7 @@
+let prevPage = 1;
+let repoLink2;
+
+
 // click event on button
 $('#input-container button').click(function(){
     let userName = $('input').val();
@@ -14,7 +18,10 @@ $('#input-container button').click(function(){
             $('body').append(loader);
         },
         success: function(data1){
-            let repoLink = data1.repos_url;
+            let totalRepo = data1.public_repos;
+            let totalPage = Math.round(totalRepo/6);
+            let repoLink = `${data1.repos_url}?page=1&per_page=6`;
+            repoLink2 = data1.repos_url;
             $.ajax({
                 url: repoLink ,
                 method: 'GET',
@@ -33,14 +40,54 @@ $('#input-container button').click(function(){
                                 for(language in data3){
                                     $(` .user-repo-${i} .lang-btn-container`).append($(`<button>${language}</button>`));
                                 }
-                            },complete: function(xhr){
-                                $('#loader-container').remove();
                             }
+                        });
+                    }
+                    $('#user-details-container').append(`<div id="pagination"></div>`);
+                    for(let i = 1; i <= totalPage; i++){
+                        $('#pagination').append(`<p id="${i}">${i}</p>`);
+                    }
+                    $(`#1`).css('background-color', '#428bca');
+                    $(`#1`).css('color', 'white');
+                    if($('#pagination')){
+                        $('#pagination p').click(function(){
+                            let page = $(this).text();
+                            $.ajax({
+                                url: `${repoLink2}?page=${page}&per_page=6` ,
+                                method: 'GET',
+                                beforeSend: function(xhr){
+                                    $('#user-repo-container').remove();
+                                    let loader = loaderContainer();
+                                    $('#pagination').before(loader);
+                                },
+                                success: function(data){
+                                    $('#pagination').before($(`<div id="user-repo-container"></div>`));
+                                    for(let i = 0; i < data.length; i++){
+                                        $('#user-repo-container').append(userRepo(data[i], i));
+                                        let languageUrl = data[i].languages_url;
+                                        $.ajax({
+                                            url: languageUrl,
+                                            method: 'GET',
+                                            success: function(data3){
+                                                for(language in data3){
+                                                    $(` .user-repo-${i} .lang-btn-container`).append($(`<button>${language}</button>`));
+                                                }
+                                            }
+                                        });
+                                    }
+                                    $(`#${prevPage}`).css('background-color', '');
+                                    $(`#${prevPage}`).css('color', 'black');
+                                    $(`#${page}`).css('background-color', '#428bca');
+                                    $(`#${page}`).css('color', 'white');
+                                    prevPage = page;
+                                },complete: function(xhr){
+                                    $('#loader-container').remove();
+                                }
+                            });
                         });
                     }
                 },complete: function(xhr){
                     $('#user-input').val("");
-                    $('#loader-container').remove();
                 }
             });
         },complete: function(xhr){

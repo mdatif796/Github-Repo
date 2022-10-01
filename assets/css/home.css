@@ -104,3 +104,16 @@ body {
           border-radius: 3px;
           color: #f0f6fb;
           font-weight: bold; }
+  body #pagination {
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    body #pagination p {
+      display: inline-block;
+      width: 1.5rem;
+      border: 0.5px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer; }
