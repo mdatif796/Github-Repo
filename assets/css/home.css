@@ -1,10 +1,27 @@
 body {
-  margin: 0; }
+  margin: 0;
+  background-image: url("../images/background-image.png"); }
   body p {
     color: #393939;
     font-weight: bold; }
   body a {
     text-decoration: none; }
+  body header {
+    background-color: #428bca;
+    padding: 16px 32px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); }
+    body header h1 {
+      color: #fff;
+      font-family: "McLaren", cursive;
+      font-weight: 200;
+      font-size: 2rem;
+      margin: 0;
+      padding: 0; }
+      body header h1 img {
+        height: 30px;
+        width: 30px;
+        margin-right: -4px;
+        margin-bottom: -3px; }
   body #loader-container {
     height: 20rem;
     width: 20rem;
@@ -18,7 +35,9 @@ body {
       height: 1.7rem;
       width: 15rem;
       outline: none;
-      font-size: 15px;
+      font-size: 18px;
+      color: #757575;
+      font-family: "Roboto",arial,sans-serif;
       margin-right: 2rem;
       padding: 2px 0 2px 10px;
       border: none;
@@ -31,9 +50,12 @@ body {
       border: none;
       background-color: #428bca;
       border-radius: 6px;
-      color: #f0f6fb;
+      color: #fff;
       cursor: pointer;
       font-weight: bold; }
+    body #input-container button:hover {
+      background-color: #757575;
+      color: #fff; }
   body #user-details {
     width: 60%;
     margin: auto;
@@ -57,14 +79,18 @@ body {
           height: 97%;
           border-radius: 50%; }
       body #user-details #imgAndName-container #name-container {
-        width: 75%; }
+        width: 75%;
+        font-family: "Roboto",arial,sans-serif; }
+        body #user-details #imgAndName-container #name-container h1:hover {
+          color: #428bca; }
         body #user-details #imgAndName-container #name-container #twitter-handle a {
+          font-family: "Roboto",arial,sans-serif;
           text-decoration: none;
-          color: #393939;
+          color: #757575;
           font-weight: bold; }
     body #user-details #user-github-link a {
       text-decoration: none;
-      color: #393939; }
+      color: #757575; }
   body #user-repo-container {
     width: 60%;
     margin: auto;
@@ -75,6 +101,7 @@ body {
     align-items: center;
     justify-content: space-between; }
     body #user-repo-container .user-repo {
+      background-color: #fff;
       width: 25rem;
       display: flex;
       flex-direction: column;
@@ -104,6 +131,9 @@ body {
           border-radius: 3px;
           color: #f0f6fb;
           font-weight: bold; }
+        body #user-repo-container .user-repo .lang-btn-container button:hover {
+          background-color: #757575;
+          color: #fff; }
   body #pagination {
     height: 1.5rem;
     display: flex;

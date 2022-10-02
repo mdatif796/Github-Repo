@@ -150,6 +150,7 @@ function loadCatchedUser(){
     if(userName !== null){
         loadDetails(userName);
     }else{
+        // when the user first open the website then they will gonna see the details of github founder "Tom Preston-Werner"
         userName = "mojombo";
         loadDetails(userName);
     }
