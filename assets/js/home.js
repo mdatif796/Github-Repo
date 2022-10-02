@@ -147,8 +147,9 @@ function loadDetails(userName){
 
 function loadCatchedUser(){
     let userName = JSON.parse(localStorage.getItem('user'));
-    console.log(userName);
-    loadDetails(userName);
+    if(userName !== null){
+        loadDetails(userName);
+    }
 }
 
 // load details when the user comes
