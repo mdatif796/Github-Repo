@@ -1,3 +1,42 @@
+let loaderContainer = function(){
+    return $(`<div id="loader-container">
+                <img src="../images/loader.gif" alt="">
+            </div>`);
+}
+
+let userRepo = function(data, i){
+    return $(`<div class="user-repo-${i} user-repo">
+                <div class="repo-details">
+                    <a href="${data.html_url}" target="_blank"><h2 class="repo-name">${data.name}</h2></a>
+                    <p class="repo-desc">${data.description ? data.description : ""}</p>
+                </div>
+                <div class="lang-btn-container">
+
+                </div>
+            </div>`)
+}
+
+let userContainer = function(data){
+    return $(`<div id="user-details">
+                <div id="imgAndName-container">
+                    <div id="img-container">
+                        <img src=${data.avatar_url} alt="">
+                    </div>
+                    <div id="name-container">
+                        <h1 id="user-name">${data.name}</h1>
+                        <p id="user-bio">${data.bio ? data.bio : ""}</p>
+                        <p id="user-location">${data.location ? data.location : ""}</p>
+                        ${data.twitter_username ? `<p id="twitter-handle">Twitter: <a href="https://twitter.com/${data.twitter_username}">https://twitter.com/${data.twitter_username}</a></p>` : ""} 
+                    </div>
+                </div>
+                <div id="user-github-link">
+                    ${data.login ? `<p><a href="https://github.com/${data.login}">https://github.com/${data.login}</a></p>` : ""} 
+                </div>
+            </div>`);
+}
+
+
+// for handling the pagination page
 let prevPage = 1;
 let repoLink2;
 
@@ -9,6 +48,10 @@ $('#input-container button').click(function(){
         alert('Enter username !!');
         return;
     }
+    loadDetails(userName);
+});
+
+function loadDetails(userName){
     $.ajax({
         url: `https://api.github.com/users/${userName}`,
         method: 'GET',
@@ -18,6 +61,7 @@ $('#input-container button').click(function(){
             $('body').append(loader);
         },
         success: function(data1){
+            localStorage.setItem('user', JSON.stringify(userName));
             let totalRepo = data1.public_repos;
             let totalPage = Math.round(totalRepo/6);
             let repoLink = `${data1.repos_url}?page=1&per_page=6`;
@@ -98,41 +142,17 @@ $('#input-container button').click(function(){
         $('#user-input').val("");
         $('#loader-container').remove();
     });
-});
-
-let loaderContainer = function(){
-    return $(`<div id="loader-container">
-                <img src="../images/loader.gif" alt="">
-            </div>`);
 }
 
-let userRepo = function(data, i){
-    return $(`<div class="user-repo-${i} user-repo">
-                <div class="repo-details">
-                    <a href="${data.html_url}" target="_blank"><h2 class="repo-name">${data.name}</h2></a>
-                    <p class="repo-desc">${data.description ? data.description : ""}</p>
-                </div>
-                <div class="lang-btn-container">
 
-                </div>
-            </div>`)
+function loadCatchedUser(){
+    let userName = JSON.parse(localStorage.getItem('user'));
+    console.log(userName);
+    loadDetails(userName);
 }
 
-let userContainer = function(data){
-    return $(`<div id="user-details">
-                <div id="imgAndName-container">
-                    <div id="img-container">
-                        <img src=${data.avatar_url} alt="">
-                    </div>
-                    <div id="name-container">
-                        <h1 id="user-name">${data.name}</h1>
-                        <p id="user-bio">${data.bio ? data.bio : ""}</p>
-                        <p id="user-location">${data.location ? data.location : ""}</p>
-                        ${data.twitter_username ? `<p id="twitter-handle">Twitter: <a href="https://twitter.com/${data.twitter_username}">https://twitter.com/${data.twitter_username}</a></p>` : ""} 
-                    </div>
-                </div>
-                <div id="user-github-link">
-                    ${data.login ? `<p><a href="https://github.com/${data.login}">https://github.com/${data.login}</a></p>` : ""} 
-                </div>
-            </div>`);
-}
+// load details when the user comes
+loadCatchedUser();
+
+
+
